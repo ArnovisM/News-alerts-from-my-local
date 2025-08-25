@@ -49,7 +49,7 @@ with open("news_list.json", "w", encoding="utf-8") as f:
     json.dump(news_list, f, ensure_ascii=False, indent=4)
 
 # --- Enviar correo ---
-load_dotenv(".env")
+load_dotenv("example.env")
 sender_email = os.getenv("email")
 receiver_email = sender_email
 password = os.getenv("password")
@@ -73,5 +73,6 @@ with smtplib.SMTP("smtp.gmail.com", 587) as server:
     server.starttls()
     server.login(sender_email, password)
     server.send_message(msg)
+
 
 print("Correo enviado correctamente.")
